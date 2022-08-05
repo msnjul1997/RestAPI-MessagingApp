@@ -40,7 +40,7 @@ public class HelloRestController {
      * UC: 4
      * @PostMapping : this annotation handle the post type of annotation
      * @RequestBody : is used to convert the body of HTTP request to java class object
-     *http://localhost:8080/post?Content-type=json : URL request through POSTMAN
+     *http://localhost:8088/post?Content-type=json : URL request through POSTMAN
      * JSON:{
      *          "firstName":"Santhosh",
      *          "lastName" : "Naik"
@@ -50,6 +50,17 @@ public class HelloRestController {
     @PostMapping("/post")
     public String sayHelloPost(@RequestBody UserInfo userInfo ){
         return "Hello " + userInfo.getFirstName() +" "+userInfo.getLastName() + " Welcome To BeidgeLabz";
+
+    }
+    /**
+     * UC:5
+     * @PostMapping: mapping HTTP POST requests onto specific handler methods Use POST Request Method and pass first name and last name in the Body;
+     *URL: http://localhost:8088/hello/put/Santhosh?lastName=Naik
+     * O/P: http://localhost:8088/hello/put/Santhosh?lastName=Naik
+     */
+    @PutMapping("/hello/put/{firstName}")
+    public String sayHello(@PathVariable String firstName, @RequestParam (value = "lastName") String lastName){
+        return "Hello " + firstName + " " + lastName + " Welcome to BridgeLabz";
 
     }
 }
