@@ -3,10 +3,7 @@
  */
 package com.bridgelabz.springrestapimessagingapp.com.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloRestController {
@@ -22,10 +19,20 @@ public class HelloRestController {
     /**
      * @RequestParam : Mapping HTTP GET Request onto specific Handler Methods.
      *                 When mapping is done all statements of  sayHello method get executed
-     *  curl : localhost:8080/getMessage?name=Ashish
      */
     @GetMapping(value="/getMessage")
     public String sayHello(@RequestParam(value = "name" )String name){
         return "Hello " + name + "Welcome To BridgeLabz";
+    }
+    /**
+     * UC:3
+     * Purpose : Use GET Request Method and pass name as path variable
+     * @param name
+     * @return
+     */
+    @GetMapping(value= "/param/{name}")
+    public String sayHelloParam(@PathVariable String name){
+
+        return "Hello " + name + " Welcome To BridgeLabz";
     }
 }
